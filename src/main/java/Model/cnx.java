@@ -26,12 +26,10 @@ public class cnx extends JFrame {
         //Etiquettes
         JLabel labelUser = new JLabel("Nom d'utilisateur ");
         JLabel labelPassword = new JLabel("Mot de passe");
-        JLabel labelID = new JLabel("identifiant");
 
 
         Champuser = new JTextField();
         userpasswrd = new JPasswordField();
-        ChampID = new JTextField();
 
         //Bouton
         JButton btnsoumettre = new JButton("soumettre");
@@ -61,8 +59,6 @@ public class cnx extends JFrame {
         add(Champuser);
         add(labelPassword);
         add(userpasswrd);
-        add(labelID);
-        add(ChampID);
         add(btnsoumettre);
         add(new JLabel("")); // Espace vide
         add(msgErreur);
@@ -79,11 +75,10 @@ public class cnx extends JFrame {
 
         try (Connection connection = DriverManager.getConnection(url, usuarioBD, contrasenaBD)) {
             //Requête SQL pour vérifier les informations d'identification
-            String sql = "SELECT * FROM usuarios WHERE nombre_usuario = ? AND contrasena = ? AND identificador = ?";
+            String sql = "SELECT * FROM usuarios WHERE nombre_usuario = ? AND contrasena = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, user);
             preparedStatement.setString(2, password);
-            preparedStatement.setString(3, id);
 
             ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -93,5 +88,9 @@ public class cnx extends JFrame {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public static void main(String[] args) {
+    new cnx();
     }
 }

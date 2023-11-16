@@ -1,64 +1,73 @@
 package Model;
 
 import javax.swing.*;
-
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Accueil {
-    private JPanel contentPane;
+    private JPanel contentpane;
+    public Accueil () {
 
-    public class Benevo {
 
-        public static void main(String[] args) {
-            // Création de la fenêtre
-            JFrame frame = new JFrame("Benevolat");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(300, 200);
+        // création de la fenêtre
+        JFrame frame = new JFrame("Acceuil");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(200, 200);
+        frame.setLayout(new GridBagLayout());
 
-            // Création du bouton
-            JButton bouton = new JButton("Benevolat");
 
-            // Ajout d'un écouteur d'événements au bouton
-            bouton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    // Appel de la fonction lorsque le bouton est cliqué
-                    new PageBenev();
-                }
-            });
+        // création du bouton
+        JButton bouton = new JButton("Benevolat");
+        bouton.setPreferredSize(new Dimension(200, 50)); // Définir la taille préférée du bouton
+        bouton.setBackground(new Color(64, 128, 128));
+        bouton.setFont(new Font("Arial", Font.PLAIN, 25));
 
-            // Ajout du bouton à la fenêtre
-            frame.getContentPane().add(bouton);
+        //bouton.setBounds(220, 400, 1000, 500);
 
-            // Affichage de la fenêtre
-            frame.setVisible(true);
-        }
+
+        // ajout d'un écouteur d'événements au bouton
+        bouton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                new PageBenev();
+            }
+        });
+
+        // ajout du bouton à la fenêtre
+        frame.getContentPane().add(bouton);
+
+        // affichage de la fenêtre
+        frame.setVisible(true);
+
+
+        // création de la fenêtre
+
+        //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //frame.setSize(100, 100);
+
+        // création du bouton
+        JButton bouton1 = new JButton("Client");
+        bouton1.setPreferredSize(new Dimension(200, 50)); // Définir la taille préférée du bouton
+        bouton1.setBackground(new Color(64, 128, 128));
+        bouton1.setFont(new Font("Arial", Font.PLAIN, 25));
+        //bouton1.setBounds(442, 400, 155, 36);
+
+        // ajout d'un écouteur d'événements au bouton
+        bouton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                new PageClient();
+            }
+        });
+
+        // ajout du bouton à la fenêtre
+        frame.getContentPane().add(bouton1);
+
+        // affichage de la fenêtre
+        frame.setVisible(true);
     }
-    public class Client1 {
-
-        public static void main(String[] args) {
-            // Création de la fenêtre
-            JFrame frame = new JFrame("Client");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(300, 200);
-
-            // Création du bouton
-            JButton bouton = new JButton("Client");
-
-            // Ajout d'un écouteur d'événements au bouton
-            bouton.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    // Appel de la fonction lorsque le bouton est cliqué
-                    new PageClient();
-                }
-            });
-
-            // Ajout du bouton à la fenêtre
-            frame.getContentPane().add(bouton);
-
-            // Affichage de la fenêtre
-            frame.setVisible(true);
-        }
+    public static void main(String[] args) {
+        new Accueil();
     }
-
 }
