@@ -33,7 +33,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>package.votre_classe</mainClass>
+                            <mainClass>package./home/mejri/Bureau/ProjetPDLA/ProjetPDLA1/src/main/java/Model</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

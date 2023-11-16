@@ -1,8 +1,7 @@
 package Model;
 
-import users.Client;
-
 import javax.swing.*;
+
 
 public class Accueil {
     private JPanel contentPane;
