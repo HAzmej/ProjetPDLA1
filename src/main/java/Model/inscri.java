@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import java.awt.*;
 
 public class inscri extends JFrame {
-    private static final long serialVersionUID = 1L;
     private JPanel contentPane;
     private JTextField textField;
     private JTextField textField_1;
@@ -17,7 +16,7 @@ public class inscri extends JFrame {
 
         setTitle("Creation du compte utilisateur");
         setBounds(100, 100, 720, 421);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         contentPane = new JPanel();
         contentPane.setBackground(new Color(255, 255, 255));
         contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -39,7 +38,7 @@ public class inscri extends JFrame {
         button.setFont(new Font("Arial Black", Font.PLAIN, 12));
         button.setForeground(new Color(255, 255, 255));
         button.setBackground(new Color(206, 32, 55));
-        button.setBounds(442, 400, 155, 36);
+        button.setBounds(442, 300, 155, 36);
         contentPane.add(button);
 
         // Ajout d'un écouteur d'événements au bouton SignUp
@@ -54,39 +53,39 @@ public class inscri extends JFrame {
         });
 
         textField = new JTextField();
-        textField.setBounds(392, 100, 267, 28);
+        textField.setBounds(392, 90, 267, 28);
         contentPane.add(textField);
         textField.setColumns(10);
 
-        JSeparator separator = new JSeparator();
-        separator.setBounds(395, 167, 264, 1);
-        contentPane.add(separator);
+        JSeparator separator_n = new JSeparator();
+        separator_n.setBounds(395, 167, 264, 1);
+        contentPane.add(separator_n);
 
-        JLabel lblNewLabel = new JLabel("Name");
-        lblNewLabel.setBounds(392, 77, 78, 13);
-        contentPane.add(lblNewLabel);
+        JLabel lblname = new JLabel("Name");
+        lblname.setBounds(392, 73, 78, 13);
+        contentPane.add(lblname);
 
         textField_1 = new JTextField();
         textField_1.setColumns(10);
         textField_1.setBounds(392, 141, 267, 28);
         contentPane.add(textField_1);
 
-        JSeparator separator_1 = new JSeparator();
-        separator_1.setBounds(395, 216, 264, 1);
-        contentPane.add(separator_1);
+        JSeparator separator_s = new JSeparator();
+        separator_s.setBounds(395, 216, 264, 1);
+        contentPane.add(separator_s);
 
-        JLabel lblNewLabel1 = new JLabel("Surname");
-        lblNewLabel.setBounds(392, 50, 78, 13);
-        contentPane.add(lblNewLabel1);
+        JLabel lblsurname = new JLabel("Surname");
+        lblsurname.setBounds(392, 125, 78, 13);
+        contentPane.add(lblsurname);
 
         textField_2 = new JTextField();
         textField_2.setColumns(10);
         textField_2.setBounds(392, 190, 267, 28);
         contentPane.add(textField_2);
 
-        JSeparator separator_2 = new JSeparator();
-        separator_2.setBounds(395, 216, 264, 1);
-        contentPane.add(separator_2);
+        JSeparator separator_email = new JSeparator();
+        separator_email.setBounds(395, 216, 264, 1);
+        contentPane.add(separator_email);
 
         JLabel lblEmail = new JLabel("Email");
         lblEmail.setBounds(392, 177, 78, 13);
@@ -97,13 +96,13 @@ public class inscri extends JFrame {
         textField_2.setBounds(392, 244, 267, 28);
         contentPane.add(textField_2);
 
-        JSeparator separator_1_1 = new JSeparator();
-        separator_1_1.setBounds(395, 270, 264, 1);
-        contentPane.add(separator_1_1);
+        JSeparator separator_mdp = new JSeparator();
+        separator_mdp.setBounds(395, 270, 264, 1);
+        contentPane.add(separator_mdp);
 
-        JLabel lblMotDePasse = new JLabel("Mot de passe");
-        lblMotDePasse.setBounds(392, 231, 78, 13);
-        contentPane.add(lblMotDePasse);
+        JLabel lblmdp = new JLabel("Mot de passe");
+        lblmdp.setBounds(392, 231, 100, 13);
+        contentPane.add(lblmdp);
 
         textField_2 = new JTextField();
         textField_2.setColumns(10);

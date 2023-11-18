@@ -20,7 +20,7 @@ public class cnx extends JFrame {
         //Config Fenetre
         setTitle("Connexion Utilisateur");
         setSize(300, 200);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setLayout(new GridLayout(5, 2));
 
         //Etiquettes
