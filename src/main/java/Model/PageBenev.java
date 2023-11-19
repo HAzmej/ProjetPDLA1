@@ -6,9 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class PageBenev {
-    private JPanel contentpane;
-    public PageBenev () {
 
+    public PageBenev () {
 
         // création de la fenêtre
         JFrame frame = new JFrame("Benevolat");
@@ -37,7 +36,6 @@ public class PageBenev {
         bouton.setBackground(new Color(183, 57, 86));
         bouton.setFont(new Font("Arial", Font.PLAIN, 25));
 
-        //bouton.setBounds(220, 400, 1000, 500);
 
 
         // ajout d'un écouteur d'événements au bouton
@@ -55,12 +53,6 @@ public class PageBenev {
         // affichage de la fenêtre
         frame.setVisible(true);
 
-
-        // création de la fenêtre
-
-        //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //frame.setSize(100, 100);
-
         // création du bouton
         JButton bouton1 = new JButton("Connexion");
         bouton1.setPreferredSize(new Dimension(200, 50)); // Définir la taille préférée du bouton
@@ -76,14 +68,12 @@ public class PageBenev {
             }
         });
 
-        // ajout du bouton à la fenêtre
-        //frame.getContentPane().add(bouton1);
-
         // affichage de la fenêtre
         frame.setVisible(true);
         pnlButton.add(bouton);
         pnlButton.add(bouton1);
-        //frame.getContentPane().add(pnlButton);
+
+        // ajout du bouton à la fenêtre
         frame.getContentPane().add(panelprincip);
         panelprincip.add(pnlButton,BorderLayout.NORTH);
 

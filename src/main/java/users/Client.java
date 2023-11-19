@@ -5,19 +5,18 @@ public class Client extends User{
     private String Surname ;
     private String Email ;
     private String Password ;
-    private String Mission;
+    private Mission UserMission;
 
-    public Client(String name, String surname, String email, String password, String name1, String surname1, String email1, String password1, String mission) {
+    public Client(String name, String surname, String email, String password, String name1, String surname1, String email1, String password1, Mission UserMission) {
         super(name, surname, email, password);
-        this.Mission = mission;
+        this.UserMission = UserMission;
     }
 
 
-    public String getMission (){
-        return this.Mission;
-    }
-    public void setMission (String Mission){
-        this.Mission=Mission;
+    public Mission getMission (){ return this.UserMission; }
+
+    public void setMission (Mission Mission){
+        this.UserMission=Mission;
     }
 
 }

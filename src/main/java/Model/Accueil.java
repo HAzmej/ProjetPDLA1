@@ -35,9 +35,6 @@ public class Accueil extends JFrame {
         bouton.setBackground(new Color(23, 182, 134));
         bouton.setFont(new Font("Arial", Font.PLAIN, 25));
 
-        //bouton.setBounds(220, 400, 1000, 500);
-
-
         // ajout d'un écouteur d'événements au bouton
         bouton.addActionListener(new ActionListener() {
             @Override
@@ -46,14 +43,9 @@ public class Accueil extends JFrame {
             }
         });
 
-        // ajout du bouton à la fenêtre
-        //frame.getContentPane().add(bouton);
-
         // affichage de la fenêtre
         frame.setVisible(true);
 
-        //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //frame.setSize(100, 100);
 
         // création du bouton
         JButton bouton1 = new JButton("Client");
@@ -70,14 +62,12 @@ public class Accueil extends JFrame {
             }
         });
 
-        // ajout du bouton à la fenêtre
-        //frame.getContentPane().add(bouton1);
-
         // affichage de la fenêtre
         frame.setVisible(true);
         pnlButton.add(bouton);
         pnlButton.add(bouton1);
-        //frame.getContentPane().add(pnlButton);
+
+        // ajout du bouton à la fenêtre
         frame.getContentPane().add(panelprincip);
         panelprincip.add(pnlButton,BorderLayout.NORTH);
     }

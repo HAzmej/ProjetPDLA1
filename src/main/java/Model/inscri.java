@@ -1,16 +1,22 @@
 package Model;
 
+import javax.naming.Name;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class inscri extends JFrame {
     private JPanel contentPane;
-    private JTextField textField;
-    private JTextField textField_1;
-    private JTextField textField_2;
+    private JTextField nom;
+    private JTextField prenom;
+    private JTextField mail;
+    private JTextField mdp;
 
     public inscri() {
 
@@ -41,21 +47,11 @@ public class inscri extends JFrame {
         button.setBounds(442, 300, 155, 36);
         contentPane.add(button);
 
-        // Ajout d'un écouteur d'événements au bouton SignUp
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                // Insérer le code pour l'inscription ici
-                // Par exemple, ouvrir une nouvelle fenêtre ou effectuer une action d'inscription
 
-                JOptionPane.showMessageDialog(null, "Inscription réussie!"); // Exemple de message
-            }
-        });
-
-        textField = new JTextField();
-        textField.setBounds(392, 90, 267, 28);
-        contentPane.add(textField);
-        textField.setColumns(10);
+        nom = new JTextField();
+        nom.setBounds(392, 90, 267, 28);
+        contentPane.add(nom);
+        nom.setColumns(10);
 
         JSeparator separator_n = new JSeparator();
         separator_n.setBounds(395, 167, 264, 1);
@@ -65,10 +61,10 @@ public class inscri extends JFrame {
         lblname.setBounds(392, 73, 78, 13);
         contentPane.add(lblname);
 
-        textField_1 = new JTextField();
-        textField_1.setColumns(10);
-        textField_1.setBounds(392, 141, 267, 28);
-        contentPane.add(textField_1);
+        prenom = new JTextField();
+        prenom.setColumns(10);
+        prenom.setBounds(392, 141, 267, 28);
+        contentPane.add(prenom);
 
         JSeparator separator_s = new JSeparator();
         separator_s.setBounds(395, 216, 264, 1);
@@ -78,10 +74,10 @@ public class inscri extends JFrame {
         lblsurname.setBounds(392, 125, 78, 13);
         contentPane.add(lblsurname);
 
-        textField_2 = new JTextField();
-        textField_2.setColumns(10);
-        textField_2.setBounds(392, 190, 267, 28);
-        contentPane.add(textField_2);
+        mail = new JTextField();
+        mail.setColumns(10);
+        mail.setBounds(392, 190, 267, 28);
+        contentPane.add(mail);
 
         JSeparator separator_email = new JSeparator();
         separator_email.setBounds(395, 216, 264, 1);
@@ -91,29 +87,78 @@ public class inscri extends JFrame {
         lblEmail.setBounds(392, 177, 78, 13);
         contentPane.add(lblEmail);
 
-        textField_2 = new JTextField();
-        textField_2.setColumns(10);
-        textField_2.setBounds(392, 244, 267, 28);
-        contentPane.add(textField_2);
+        mdp = new JTextField();
+        mdp.setColumns(10);
+        mdp.setBounds(392, 244, 267, 28);
+        contentPane.add(mdp);
 
         JSeparator separator_mdp = new JSeparator();
         separator_mdp.setBounds(395, 270, 264, 1);
         contentPane.add(separator_mdp);
 
+
         JLabel lblmdp = new JLabel("Mot de passe");
         lblmdp.setBounds(392, 231, 100, 13);
         contentPane.add(lblmdp);
 
-        textField_2 = new JTextField();
-        textField_2.setColumns(10);
-        textField_2.setBounds(392, 244, 267, 28);
-        contentPane.add(textField_2);
+        // Ajout d'un écouteur d'événements au bouton SignUp
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String Name = nom.getText();
+                String Surname= prenom.getText();
+                String Mail = mail.getText();
+                String password = mdp.getText();
 
-        JSeparator separator_1_2 = new JSeparator();
-        separator_1_2.setBounds(395, 270, 264, 1);
-        contentPane.add(separator_1_2);
+                if (inscrireUtilisateur(Name, Surname,Mail,password)) {
+                    // L'inscription a réussi
+                    JOptionPane.showMessageDialog(null, "Inscription réussie. Vous pouvez maintenant vous connecter.");
+                    cnx cnxFrame = new cnx();
+                    cnxFrame.setVisible(true);
+                } else {
+                    // L'inscription a échoué
+                    JOptionPane.showMessageDialog(null, "L'inscription a échoué. Veuillez réessayer.");
+                }
+            }
+        });
+        add(lblname);
+        add(nom);
+        add(lblsurname);
+        add(prenom);
+        add(lblEmail);
+        add(mail);
+        add(lblmdp);
+        add(mdp);
+        add(new JLabel(""));
+        add(button);
+        setVisible(true);
     }
 
+    private boolean inscrireUtilisateur(String Name, String Surname, String Mail, String motdepasse) {
+        // Configure la connexion de la BBDD
+        String url = "jdbc:mysql://srv-bdens.insa-toulouse.fr:3306/projet_gei_037";
+        String usuarioBD = "projet_gei_037";
+        String contrasenaBD = "ook5ue9R";
+
+        try (Connection connection = DriverManager.getConnection(url, usuarioBD, contrasenaBD)) {
+            // Requête SQL pour insérer un nouvel utilisateur dans la table "usuarios"
+            String sql = "INSERT INTO Utilisateur (nom,prenom,mail, mot_de_passe) Values (?, ?, ?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, Name);
+            preparedStatement.setString(2, Surname);
+            preparedStatement.setString(3, Mail);
+            preparedStatement.setString(4, motdepasse);
+
+            // Exécute la requête d'insertion
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            // Si au moins une ligne a été affectée, l'inscription est réussie
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {

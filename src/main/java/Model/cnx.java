@@ -1,5 +1,6 @@
 package Model;
 
+import javax.naming.Name;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -13,7 +14,6 @@ import java.sql.SQLException;
 public class cnx extends JFrame {
     private JTextField Champuser;
     private JPasswordField userpasswrd;
-    private JTextField ChampID;
     private JLabel msgErreur;
 
     public cnx() {
@@ -41,13 +41,16 @@ public class cnx extends JFrame {
         // Écouteur d'événements pour le bouton Soumettre
         btnsoumettre.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String user = Champuser.getText();
+                String Name = Champuser.getText();
                 char[] password = userpasswrd.getPassword();
-                String id = ChampID.getText();
 
-                if (validerUtilisateur(user, new String(password), id)) {
-                    //
+
+                if (validerUtilisateur(Name, new String(password))) {
+                    //Connexion reussie
                     JOptionPane.showMessageDialog(null, "Authentification réussie. Redirection vers la page...");
+                    new PageMission();//else
+                    //{new PageMissionBenev(); }
+
                 } else {
                     // Afficher un message d'erreur
                     msgErreur.setText("Authentification échouée. Vérifiez vos données.");
@@ -67,17 +70,17 @@ public class cnx extends JFrame {
         setVisible(true);
     }
 
-    private boolean validerUtilisateur(String user, String password, String id) {
+    private boolean validerUtilisateur(String Name, String password) {
         // Configure la connexion de la BBDD
-        String url = "jdbc:mysql://localhost:3306/projet_gei_37";
-        String usuarioBD = "projet_gei_37";
+        String url = "jdbc:mysql://srv-bdens.insa-toulouse.fr:3306/projet_gei_037";
+        String usuarioBD = "projet_gei_037";
         String contrasenaBD = "ook5ue9R";
 
         try (Connection connection = DriverManager.getConnection(url, usuarioBD, contrasenaBD)) {
             //Requête SQL pour vérifier les informations d'identification
-            String sql = "SELECT * FROM usuarios WHERE nombre_usuario = ? AND contrasena = ?";
+            String sql = "SELECT * FROM Utilisateur WHERE nom = ? AND mot_de_passe = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, user);
+            preparedStatement.setString(1, Name);
             preparedStatement.setString(2, password);
 
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -92,5 +95,6 @@ public class cnx extends JFrame {
 
     public static void main(String[] args) {
     new cnx();
+
     }
 }

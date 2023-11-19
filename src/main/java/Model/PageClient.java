@@ -6,9 +6,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class PageClient {
-    private JPanel contentpane;
-    public PageClient () {
 
+    public PageClient () {
 
         // création de la fenêtre
         JFrame frame = new JFrame("Client");
@@ -17,6 +16,7 @@ public class PageClient {
         frame.setLayout(new GridBagLayout());
 
         JPanel panelprincip = new JPanel(new BorderLayout());
+
         //ajout Image
         ImageIcon image = new ImageIcon("/home/mejri/Bureau/ProjetPDLA/ProjetPDLA1/src/main/java/Model/IMG1.png");
         Image orgimage = image.getImage();
@@ -36,9 +36,6 @@ public class PageClient {
         bouton.setBackground(new Color(183, 57, 86));
         bouton.setFont(new Font("Arial", Font.PLAIN, 25));
 
-        //bouton.setBounds(220, 400, 1000, 500);
-
-
         // ajout d'un écouteur d'événements au bouton
         bouton.addActionListener(new ActionListener() {
             @Override
@@ -55,11 +52,6 @@ public class PageClient {
         frame.setVisible(true);
 
 
-        // création de la fenêtre
-
-        //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //frame.setSize(100, 100);
-
         // création du bouton
         JButton bouton1 = new JButton("Connexion");
         bouton1.setPreferredSize(new Dimension(200, 50)); // Définir la taille préférée du bouton
@@ -75,14 +67,13 @@ public class PageClient {
             }
         });
 
-        // ajout du bouton à la fenêtre
-        //frame.getContentPane().add(bouton1);
 
         // affichage de la fenêtre
         frame.setVisible(true);
         pnlButton.add(bouton);
         pnlButton.add(bouton1);
-        //frame.getContentPane().add(pnlButton);
+
+        // ajout du bouton à la fenêtre
         frame.getContentPane().add(panelprincip);
         panelprincip.add(pnlButton,BorderLayout.NORTH);
     }
