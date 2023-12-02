@@ -1,6 +1,6 @@
 package Model;
 
-import javax.naming.Name;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionEvent;
@@ -11,14 +11,14 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class inscri extends JFrame {
+public class inscri2 extends JFrame {
     private JPanel contentPane;
     private JTextField nom;
     private JTextField prenom;
     private JTextField mail;
     private JTextField mdp;
 
-    public inscri() {
+    public inscri2() {
 
         setTitle("Creation du compte utilisateur");
         setBounds(100, 100, 720, 421);
@@ -113,7 +113,7 @@ public class inscri extends JFrame {
                 if (inscrireUtilisateur(Name, Surname,Mail,password)) {
                     // L'inscription a réussi
                     JOptionPane.showMessageDialog(null, "Inscription réussie. Vous pouvez maintenant vous connecter.");
-                    cnx cnxFrame = new cnx();
+                    cnx2 cnxFrame = new cnx2();
                     cnxFrame.setVisible(true);
                 } else {
                     // L'inscription a échoué
@@ -142,7 +142,7 @@ public class inscri extends JFrame {
 
         try (Connection connection = DriverManager.getConnection(url, usuarioBD, contrasenaBD)) {
             // Requête SQL pour insérer un nouvel utilisateur dans la table "usuarios"
-            String sql = "INSERT INTO Utilisateur (nom,prenom,mail, mot_de_passe) Values (?, ?, ?, ?)";
+            String sql = "INSERT INTO Benevole (nom,prenom,mail, mot_de_passe) Values (?, ?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, Name);
             preparedStatement.setString(2, Surname);
@@ -163,7 +163,7 @@ public class inscri extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    inscri frame = new inscri();
+                    inscri2 frame = new inscri2();
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();

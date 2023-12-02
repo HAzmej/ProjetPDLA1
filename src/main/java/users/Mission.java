@@ -2,29 +2,26 @@ package users;
 
 public class Mission {
 
+    private int iduser;
     private String description;
-    private String task;
-    private String date;
+    private int date;
     private User user;
     private States state;
+    private String Commentaire;
 
-    public Mission(User user, String description, String task, String date, States state ){
+    public Mission(int iduser, String description, int date, States state, String comm ){
             this.description = description;
-            this.task = task;
+            this.iduser=iduser;
             this.date=date;
             this.state=state;
-            this.user=user;
+            this.Commentaire=comm;
     }
 
     public String getDescription() { return description; }
 
     public void setDescription(String description) { this.description = description; }
 
-    public String getTask() { return task; }
-
-    public User getUser(){ return user; }
-
-    public String getDate() { return date; }
+    public int getDate() { return date; }
 
     public States getState() { return state; }
 

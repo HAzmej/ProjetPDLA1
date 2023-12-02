@@ -1,21 +1,25 @@
 package users;
 
 public class User {
+    private int user;
     private String Name;
     private String Surname ;
     private String Email ;
     private String Password ;
 
-    public User(String name, String surname, String email, String password) {
-        Name = name;
-        Surname = surname;
-        Email = email;
-        Password = password;
+    public User(int user,String name, String surname, String email, String password) {
+        this.user=user;
+        this.Name = name;
+        this.Surname = surname;
+        this.Email = email;
+        this.Password = password;
     }
 
     public String getName(){
         return this.Name;
     }
+    public int getid(){return this.user;}
+
     public String getSurname(){
         return this.Surname;
     }

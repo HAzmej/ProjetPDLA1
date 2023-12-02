@@ -1,6 +1,6 @@
 package Model;
 
-import javax.naming.Name;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -11,12 +11,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class cnx extends JFrame {
+public class cnx1 extends JFrame {
     private JTextField Champuser;
     private JPasswordField userpasswrd;
     private JLabel msgErreur;
+    private int i;
 
-    public cnx() {
+    public cnx1() {
         //Config Fenetre
         setTitle("Connexion Utilisateur");
         setSize(300, 200);
@@ -44,11 +45,11 @@ public class cnx extends JFrame {
                 String Name = Champuser.getText();
                 char[] password = userpasswrd.getPassword();
 
-
-                if (validerUtilisateur(Name, new String(password))) {
+                i=validerUtilisateur(Name, new String(password));
+                if (i!=-1) {
                     //Connexion reussie
                     JOptionPane.showMessageDialog(null, "Authentification réussie. Redirection vers la page...");
-                    new PageMission();//else
+                    new PageMission(i);//else
                     //{new PageMissionBenev(); }
 
                 } else {
@@ -70,7 +71,7 @@ public class cnx extends JFrame {
         setVisible(true);
     }
 
-    private boolean validerUtilisateur(String Name, String password) {
+    private int validerUtilisateur(String Name, String password) {
         // Configure la connexion de la BBDD
         String url = "jdbc:mysql://srv-bdens.insa-toulouse.fr:3306/projet_gei_037";
         String usuarioBD = "projet_gei_037";
@@ -78,23 +79,28 @@ public class cnx extends JFrame {
 
         try (Connection connection = DriverManager.getConnection(url, usuarioBD, contrasenaBD)) {
             //Requête SQL pour vérifier les informations d'identification
-            String sql = "SELECT * FROM Utilisateur WHERE nom = ? AND mot_de_passe = ?";
+            String sql = "SELECT id FROM User WHERE nom = ? AND mot_de_passe = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, Name);
             preparedStatement.setString(2, password);
 
             ResultSet resultSet = preparedStatement.executeQuery();
-
+        
             // S´il y a un résultat, les informations d'identification sont valides.
-            return resultSet.next();
+            if (resultSet.next()) {
+                return resultSet.getInt("id");
+            } else {
+                // Aucun utilisateur trouvé avec ces informations d'identification
+                return -1; // ou une autre valeur qui indique une absence d'ID valide
+            }
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
+            return -1;
         }
     }
 
     public static void main(String[] args) {
-    new cnx();
+    new cnx1();
 
     }
 }
