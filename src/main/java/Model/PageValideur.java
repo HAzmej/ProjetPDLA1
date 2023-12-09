@@ -20,8 +20,9 @@ public class PageValideur extends JFrame{
         btnsoumettre.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                inscri inscriptionFrame = new inscri(0);
-                inscriptionFrame.setVisible(true);
+                setVisible(false);
+                new inscri(0);
+                
             }
         });
 
@@ -38,6 +39,7 @@ public class PageValideur extends JFrame{
         btnsoumettre1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                setVisible(false);
                 new cnx(0);
             }
         });

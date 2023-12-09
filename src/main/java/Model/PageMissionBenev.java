@@ -38,7 +38,7 @@ public class PageMissionBenev extends JFrame {
         missionTable.getColumnModel().getColumn(4).setPreferredWidth(200); // Commentaire  
          // Ajouter le JScrollPane à la fenêtre
         add(scrollPane, BorderLayout.CENTER);
-        
+
         try {
             connection =Network.Connect();
             // Exécuter la requête SQL pour récupérer les missions de l'utilisateur
@@ -91,9 +91,7 @@ public class PageMissionBenev extends JFrame {
          if (result == JOptionPane.OK_OPTION) {
              int idmission = Integer.parseInt(id.getText());
              int i=0;
-             
-             
-             
+
              for ( i =0;i< tableModel.getRowCount();i++) { 
                 int val = Integer.valueOf(tableModel.getValueAt(i,0).toString());
                 if (val == idmission) { if (tableModel.getValueAt(i,3)=="ACCEPTED") {aa="FINISHED";} else {aa="ACCEPTED";}

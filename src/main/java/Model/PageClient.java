@@ -21,8 +21,9 @@ public class PageClient extends JFrame{
         btnsoumettre.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                inscri inscriptionFrame = new inscri(1);
-                inscriptionFrame.setVisible(true);
+                setVisible(false);
+                new inscri(1);
+                
             }
         });
 
@@ -39,7 +40,9 @@ public class PageClient extends JFrame{
         btnsoumettre1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                setVisible(false);
                 new cnx(1);
+                
             }
         });
 

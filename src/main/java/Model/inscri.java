@@ -116,8 +116,9 @@ public class inscri extends JFrame {
                 if (inscrireUtilisateur(Name, Surname,Mail,password)) {
                     // L'inscription a réussi
                     JOptionPane.showMessageDialog(null, "Inscription réussie. Vous pouvez maintenant vous connecter.");
-                    cnx cnxFrame = new cnx(1);
-                    cnxFrame.setVisible(true);
+                    setVisible(false);
+                    new cnx(1);
+                   
                 } else {
                     // L'inscription a échoué
                     JOptionPane.showMessageDialog(null, "L'inscription a échoué. Veuillez réessayer.");
@@ -126,20 +127,23 @@ public class inscri extends JFrame {
                 if (inscrireBenevole(Name, Surname,Mail,password)) {
                 // L'inscription a réussi
                 JOptionPane.showMessageDialog(null, "Inscription réussie. Vous pouvez maintenant vous connecter.");
-                cnx cnxFrame = new cnx(2);
-                cnxFrame.setVisible(true);
+                setVisible(false);
+                new cnx(2);
+                
             } else {
                 // L'inscription a échoué
                 JOptionPane.showMessageDialog(null, "L'inscription a échoué. Veuillez réessayer.");
             }} else if (n==0) {if (inscrireValideur(Name, Surname,Mail,password)) {
                 // L'inscription a réussi
                 JOptionPane.showMessageDialog(null, "Inscription réussie. Vous pouvez maintenant vous connecter.");
-                cnx cnxFrame = new cnx(0);
-                cnxFrame.setVisible(true);
+                setVisible(false);
+                new cnx(0);
+               
             } else {
                 // L'inscription a échoué
                 JOptionPane.showMessageDialog(null, "L'inscription a échoué. Veuillez réessayer.");
             }}
+           
             }
         });
         add(lblname);

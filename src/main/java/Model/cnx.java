@@ -54,6 +54,7 @@ public class cnx extends JFrame {
                     JOptionPane.showMessageDialog(null, "Authentification réussie. Redirection vers la page...");
                     try {
                         new PageMission(i);
+                        setVisible(false);
                     } catch (SQLException e1) {
                         e1.printStackTrace();
                     }
@@ -66,6 +67,7 @@ public class cnx extends JFrame {
                 //Connexion reussie
                 JOptionPane.showMessageDialog(null, "Authentification réussie. Redirection vers la page...");
                 new PageMissionBenev();
+                setVisible(false);
                 
 
             } else {
@@ -76,6 +78,7 @@ public class cnx extends JFrame {
                 //Connexion reussie
                 JOptionPane.showMessageDialog(null, "Authentification réussie. Redirection vers la page...");
                 new PageMissionValid();
+                setVisible(false);
                 
 
             } else {

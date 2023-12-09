@@ -25,8 +25,9 @@ public class PageBenev extends JFrame{
         bouton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                inscri inscriptionFrame = new inscri(2);
-                inscriptionFrame.setVisible(true);
+                setVisible(false);
+                new inscri(2);
+               
             }
         });
         // affichage de la fenêtre
@@ -39,6 +40,7 @@ public class PageBenev extends JFrame{
         bouton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
+                setVisible(false);
                 new cnx(2);
             }
         });

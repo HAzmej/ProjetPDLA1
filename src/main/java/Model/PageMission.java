@@ -134,7 +134,7 @@ public class PageMission  {
             String nouveauCommentaire = "Pas de Commentaire";
 
             // Ajouter la nouvelle mission au modèle de tableau
-            int nouvelId = tableModel.getRowCount() + 1; // Vous devrez peut-être ajuster la logique pour obtenir le nouvel ID
+            int nouvelId = tableModel.getRowCount() + 1; 
             tableModel.addRow(new Object[]{nouvelId, nouvelleDescription, nouvelleDate, nouvelEtat, nouveauCommentaire});
 
             // Insérer la nouvelle mission dans la base de données
