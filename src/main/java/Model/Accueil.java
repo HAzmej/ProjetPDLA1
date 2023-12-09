@@ -10,9 +10,8 @@ public class Accueil extends JFrame {
         JPanel panelprincip = new JPanel(new BorderLayout());
      
         JPanel pnlButton = new JPanel(new FlowLayout(FlowLayout.CENTER,50,50));
-       
-        setTitle("Connexion Utilisateur");
-        setSize(250, 135);
+        setTitle("Bienvenue");
+        setSize(400, 240);
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setLayout(new GridLayout(5, 2));
 
@@ -39,13 +38,24 @@ public class Accueil extends JFrame {
                 new PageClient();
             }
         });
+        JButton btnsoumettre2 = new JButton("Valideur");
+        // ajout d'un écouteur d'événements au bouton
+        btnsoumettre2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                new PageValideur();
+            }
+        });
 
         // affichage de la fenêtre
         setVisible(true);
         getContentPane().add(panelprincip);
+        
         panelprincip.add(pnlButton,BorderLayout.NORTH);
-        add(btnsoumettre).setBounds(0, 0, 250, 50);
-        add(btnsoumettre1).setBounds(0,50,250,50);
+        add(btnsoumettre).setBounds(0, 0, 400, 70);
+        add(btnsoumettre1).setBounds(0,70,400,70);
+        add(btnsoumettre2).setBounds(0,140,400,70);
+        setLocationRelativeTo(null);
 
         // ajout du bouton à la fenêtre
 

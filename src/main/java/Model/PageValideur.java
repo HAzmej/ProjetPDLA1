@@ -5,11 +5,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class PageClient extends JFrame{
-
-    public PageClient () {
+public class PageValideur extends JFrame{
+    public PageValideur () {
         // création de la fenêtre
-        setTitle("Page Utilisateur");
+        setTitle("Page Valideur");
         setSize(400, 175);
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setLayout(new GridLayout(5, 2));
@@ -21,7 +20,7 @@ public class PageClient extends JFrame{
         btnsoumettre.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                inscri inscriptionFrame = new inscri(1);
+                inscri inscriptionFrame = new inscri(0);
                 inscriptionFrame.setVisible(true);
             }
         });
@@ -34,12 +33,12 @@ public class PageClient extends JFrame{
 
         // création du bouton
         JButton btnsoumettre1 = new JButton("Connexion");
-    
+
         // ajout d'un écouteur d'événements au bouton
         btnsoumettre1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                new cnx(1);
+                new cnx(0);
             }
         });
 
@@ -49,13 +48,15 @@ public class PageClient extends JFrame{
         add(btnsoumettre).setBounds(0, 0, 400, 70);
         add(btnsoumettre1).setBounds(0,70,400,70);
         setLocationRelativeTo(null);
+        
         // ajout du bouton à la fenêtre
         getContentPane().add(panelprincip);
         
     }
     public static void main(String[] args) {
-        new PageClient();
+        new PageValideur();
     }
 }
 
+    
 

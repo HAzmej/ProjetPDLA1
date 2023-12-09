@@ -8,10 +8,9 @@ import java.awt.event.ActionListener;
 public class PageBenev extends JFrame{
 
     public PageBenev () {
-
         // création de la fenêtre
         setTitle("Page Benevole");
-        setSize(250, 135);
+        setSize(400, 175);
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         setLayout(new GridLayout(5, 2));
 
@@ -26,12 +25,10 @@ public class PageBenev extends JFrame{
         bouton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                inscri2 inscriptionFrame = new inscri2();
+                inscri inscriptionFrame = new inscri(2);
                 inscriptionFrame.setVisible(true);
             }
         });
-
-        
         // affichage de la fenêtre
         setVisible(true);
 
@@ -42,14 +39,15 @@ public class PageBenev extends JFrame{
         bouton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
-                new cnx2();
+                new cnx(2);
             }
         });
 
         // affichage de la fenêtre
         setVisible(true);
-        add(bouton).setBounds(0, 0, 250, 50);
-        add(bouton1).setBounds(0,50,250,50);
+        add(bouton).setBounds(0, 0, 400, 70);
+        add(bouton1).setBounds(0,70,400,70);
+        setLocationRelativeTo(null);
 
         
         // ajout du bouton à la fenêtre

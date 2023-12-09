@@ -3,24 +3,27 @@ package Model;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
+import Network.Network;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.*;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class inscri2 extends JFrame {
+public class inscri extends JFrame {
     private JPanel contentPane;
     private JTextField nom;
     private JTextField prenom;
     private JTextField mail;
     private JTextField mdp;
+  
 
-    public inscri2() {
+    public inscri(int n) {
 
-        setTitle("Creation du compte utilisateur");
+        setTitle("Creation du compte ");
         setBounds(100, 100, 720, 421);
         setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         contentPane = new JPanel();
@@ -109,16 +112,34 @@ public class inscri2 extends JFrame {
                 String Surname= prenom.getText();
                 String Mail = mail.getText();
                 String password = mdp.getText();
-
+                if (n==1){
                 if (inscrireUtilisateur(Name, Surname,Mail,password)) {
                     // L'inscription a réussi
                     JOptionPane.showMessageDialog(null, "Inscription réussie. Vous pouvez maintenant vous connecter.");
-                    cnx2 cnxFrame = new cnx2();
+                    cnx cnxFrame = new cnx(1);
                     cnxFrame.setVisible(true);
                 } else {
                     // L'inscription a échoué
                     JOptionPane.showMessageDialog(null, "L'inscription a échoué. Veuillez réessayer.");
                 }
+            } else if (n==2) { 
+                if (inscrireBenevole(Name, Surname,Mail,password)) {
+                // L'inscription a réussi
+                JOptionPane.showMessageDialog(null, "Inscription réussie. Vous pouvez maintenant vous connecter.");
+                cnx cnxFrame = new cnx(2);
+                cnxFrame.setVisible(true);
+            } else {
+                // L'inscription a échoué
+                JOptionPane.showMessageDialog(null, "L'inscription a échoué. Veuillez réessayer.");
+            }} else if (n==0) {if (inscrireValideur(Name, Surname,Mail,password)) {
+                // L'inscription a réussi
+                JOptionPane.showMessageDialog(null, "Inscription réussie. Vous pouvez maintenant vous connecter.");
+                cnx cnxFrame = new cnx(0);
+                cnxFrame.setVisible(true);
+            } else {
+                // L'inscription a échoué
+                JOptionPane.showMessageDialog(null, "L'inscription a échoué. Veuillez réessayer.");
+            }}
             }
         });
         add(lblname);
@@ -135,14 +156,56 @@ public class inscri2 extends JFrame {
     }
 
     private boolean inscrireUtilisateur(String Name, String Surname, String Mail, String motdepasse) {
-        // Configure la connexion de la BBDD
-        String url = "jdbc:mysql://srv-bdens.insa-toulouse.fr:3306/projet_gei_037";
-        String usuarioBD = "projet_gei_037";
-        String contrasenaBD = "ook5ue9R";
-
-        try (Connection connection = DriverManager.getConnection(url, usuarioBD, contrasenaBD)) {
+       
+        Connection connection=null;
+        try  {
+            connection =Network.Connect();
             // Requête SQL pour insérer un nouvel utilisateur dans la table "usuarios"
+            String sql = "INSERT INTO User (nom,prenom,mail, mot_de_passe) Values (?, ?, ?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, Name);
+            preparedStatement.setString(2, Surname);
+            preparedStatement.setString(3, Mail);
+            preparedStatement.setString(4, motdepasse);
+
+            // Exécute la requête d'insertion
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            // Si au moins une ligne a été affectée, l'inscription est réussie
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    private boolean inscrireBenevole(String Name, String Surname, String Mail, String motdepasse) {
+        Connection connection=null;
+        try  {
+            connection =Network.Connect();
+            // Requête SQL pour insérer un nouvel Benevole dans la table "usuarios"
             String sql = "INSERT INTO Benevole (nom,prenom,mail, mot_de_passe) Values (?, ?, ?, ?)";
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, Name);
+            preparedStatement.setString(2, Surname);
+            preparedStatement.setString(3, Mail);
+            preparedStatement.setString(4, motdepasse);
+
+            // Exécute la requête d'insertion
+            int rowsAffected = preparedStatement.executeUpdate();
+
+            // Si au moins une ligne a été affectée, l'inscription est réussie
+            return rowsAffected > 0;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+    private boolean inscrireValideur(String Name, String Surname, String Mail, String motdepasse) {
+        Connection connection=null;
+        try  {
+            connection =Network.Connect();
+            // Requête SQL pour insérer un nouvel Benevole dans la table "usuarios"
+            String sql = "INSERT INTO Valideur (nom,prenom,mail, mot_de_passe) Values (?, ?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, Name);
             preparedStatement.setString(2, Surname);
@@ -163,7 +226,7 @@ public class inscri2 extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    inscri2 frame = new inscri2();
+                    inscri frame = new inscri(1);
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();

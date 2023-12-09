@@ -19,5 +19,6 @@ public class Client extends User{
     public void setMission (Mission Mission){
         this.UserMission=Mission;
     }
+   
 
 }
