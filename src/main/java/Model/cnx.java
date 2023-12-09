@@ -55,10 +55,8 @@ public class cnx extends JFrame {
                     try {
                         new PageMission(i);
                     } catch (SQLException e1) {
-                        // TODO Auto-generated catch block
                         e1.printStackTrace();
-                    }//else
-                    //{new PageMissionBenev(); }
+                    }
 
                 } else {
                     // Afficher un message d'erreur
@@ -118,8 +116,7 @@ public class cnx extends JFrame {
             if (resultSet.next()) {
                 return resultSet.getInt("id");
             } else {
-                // Aucun utilisateur trouvé avec ces informations d'identification
-                return -1; // ou une autre valeur qui indique une absence d'ID valide
+                return -1; 
             }
         } catch (SQLException e) {
             e.printStackTrace();

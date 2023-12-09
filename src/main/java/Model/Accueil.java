@@ -57,8 +57,6 @@ public class Accueil extends JFrame {
         add(btnsoumettre2).setBounds(0,140,400,70);
         setLocationRelativeTo(null);
 
-        // ajout du bouton à la fenêtre
-
     }
     public static void main(String[] args) {
         new Accueil();

@@ -204,7 +204,7 @@ public class inscri extends JFrame {
         Connection connection=null;
         try  {
             connection =Network.Connect();
-            // Requête SQL pour insérer un nouvel Benevole dans la table "usuarios"
+            // Requête SQL pour insérer un nouvel Valideur dans la table "usuarios"
             String sql = "INSERT INTO Valideur (nom,prenom,mail, mot_de_passe) Values (?, ?, ?, ?)";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, Name);
