@@ -13,12 +13,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
 public class cnx extends JFrame {
     private JTextField Champuser;
     private JPasswordField userpasswrd;
     private JLabel msgErreur;
     private int i;
-
+    
     public cnx(int n) {
         //Config Fenetre
         setTitle("Connexion ");
@@ -132,13 +133,14 @@ public class cnx extends JFrame {
         try  {
             connection =Network.Connect();
             //Requête SQL pour vérifier les informations d'identification
-            String sql = "SELECT * FROM Benevole WHERE mail = ? AND mot_de_passe = ?";
+            String sql = "SELECT nom, prenom FROM Benevole WHERE mail = ? AND mot_de_passe = ?";
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1, Name);
             preparedStatement.setString(2, password);
+            
 
             ResultSet resultSet = preparedStatement.executeQuery();
-
+            //benv = new Benev(resultSet.getString("nom"),resultSet.getString("prenom"));
             // S´il y a un résultat, les informations d'identification sont valides.
             return resultSet.next();
         } catch (SQLException e) {

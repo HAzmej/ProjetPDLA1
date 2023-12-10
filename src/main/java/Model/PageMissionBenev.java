@@ -73,7 +73,7 @@ public class PageMissionBenev extends JFrame {
         setVisible(true);
     }
    
-    void ChoisirMission() {
+    void ChoisirMission( ) {
          // Créer une boîte de dialogue pour saisir les informations de la mission
          JTextField id = new JTextField();
 
@@ -83,10 +83,10 @@ public class PageMissionBenev extends JFrame {
          myPanel.add(id);
          String missdescr="";
         
-         int result = JOptionPane.showConfirmDialog(null, myPanel,
-                 "Veuillez saisir l'id de la mission", JOptionPane.OK_CANCEL_OPTION);
+         int result = JOptionPane.showConfirmDialog(null, myPanel,"Veuillez saisir l'id de la mission", JOptionPane.OK_CANCEL_OPTION);
          String aa="";
          Object obj;
+         //String comm="Mission finie" ;//benv.getName()+" "+benv.getSurname();
          // Si l'utilisateur clique sur OK, Changer la mission
          if (result == JOptionPane.OK_OPTION) {
              int idmission = Integer.parseInt(id.getText());
@@ -108,7 +108,7 @@ public class PageMissionBenev extends JFrame {
              String sql = "UPDATE Mission SET States = ? WHERE mission_description=? ";
              try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
                  preparedStatement.setString(1, aa);
-                 preparedStatement.setString(2,missdescr); 
+                 preparedStatement.setString(2,missdescr);
                  preparedStatement.executeUpdate();
              }
          } catch (SQLException ex) {

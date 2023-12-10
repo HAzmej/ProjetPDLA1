@@ -119,8 +119,7 @@ public class PageMissionValid extends JFrame{
          String Comment="";
         
          
-         int result = JOptionPane.showConfirmDialog(null, myPanel,
-                 "Veuillez saisir l'id de la mission et commentaire", JOptionPane.OK_CANCEL_OPTION);
+         int result = JOptionPane.showConfirmDialog(null, myPanel,"Veuillez saisir l'id de la mission et commentaire", JOptionPane.OK_CANCEL_OPTION);
          
          // Si l'utilisateur clique sur OK, Changer la mission
          if (result == JOptionPane.OK_OPTION) {

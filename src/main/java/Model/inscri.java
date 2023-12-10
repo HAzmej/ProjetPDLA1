@@ -5,6 +5,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import Network.Network;
+import users.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,6 +20,9 @@ public class inscri extends JFrame {
     private JTextField prenom;
     private JTextField mail;
     private JTextField mdp;
+    Client client;
+    Benev benev;
+    User valid;
   
 
     public inscri(int n) {
@@ -117,6 +121,7 @@ public class inscri extends JFrame {
                     // L'inscription a réussi
                     JOptionPane.showMessageDialog(null, "Inscription réussie. Vous pouvez maintenant vous connecter.");
                     setVisible(false);
+                    client=new Client(Name, Surname,Mail,password);
                     new cnx(1);
                    
                 } else {
@@ -128,6 +133,7 @@ public class inscri extends JFrame {
                 // L'inscription a réussi
                 JOptionPane.showMessageDialog(null, "Inscription réussie. Vous pouvez maintenant vous connecter.");
                 setVisible(false);
+                benev=new Benev(Name, Surname,Mail,password);
                 new cnx(2);
                 
             } else {
@@ -138,6 +144,7 @@ public class inscri extends JFrame {
                 JOptionPane.showMessageDialog(null, "Inscription réussie. Vous pouvez maintenant vous connecter.");
                 setVisible(false);
                 new cnx(0);
+                valid=new User(Name, Surname,Mail,password);
                
             } else {
                 // L'inscription a échoué

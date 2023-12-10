@@ -44,7 +44,7 @@ public class PageMission  {
         // Ajouter le JScrollPane à la fenêtre
         frame.add(scrollPane, BorderLayout.CENTER);
 
-        // Charger les missions de l'utilisateur depuis la base de données (remplacez cela par votre propre logique)
+        // Charger les missions de l'utilisateur depuis la base de données 
         Connection connection = null;
         
         connection =Network.Connect();
@@ -121,8 +121,7 @@ public class PageMission  {
         myPanel.add(new JLabel("Description:"));
         myPanel.add(descriptionField);
         
-        int result = JOptionPane.showConfirmDialog(null, myPanel,
-                "Veuillez saisir les informations de la mission", JOptionPane.OK_CANCEL_OPTION);
+        int result = JOptionPane.showConfirmDialog(null, myPanel,"Veuillez saisir les informations de la mission", JOptionPane.OK_CANCEL_OPTION);
         
         // Si l'utilisateur clique sur OK, ajouter la nouvelle mission
         if (result == JOptionPane.OK_OPTION) {

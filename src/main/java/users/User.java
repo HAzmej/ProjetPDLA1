@@ -7,12 +7,25 @@ public class User {
     private String Email ;
     private String Password ;
 
-    public User(int user,String name, String surname, String email, String password) {
-        this.user=user;
+    public User(String name, String surname, String email, String password) {
+        this.user++;
         this.Name = name;
         this.Surname = surname;
         this.Email = email;
         this.Password = password;
+    }
+     public User(String name, String surname) {
+        this.user++;
+        this.Name = name;
+        this.Surname = surname;
+       
+    }
+     public User(String name, String surname, String email) {
+        this.user++;
+        this.Name = name;
+        this.Surname = surname;
+        this.Email = email;
+      
     }
 
     public String getName(){
