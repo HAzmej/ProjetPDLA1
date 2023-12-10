@@ -166,7 +166,7 @@ public class inscri extends JFrame {
         setVisible(true);
     }
 
-    private boolean inscrireUtilisateur(String Name, String Surname, String Mail, String motdepasse) {
+    public boolean inscrireUtilisateur(String Name, String Surname, String Mail, String motdepasse) {
        
         Connection connection=null;
         try  {
@@ -189,7 +189,7 @@ public class inscri extends JFrame {
             return false;
         }
     }
-    private boolean inscrireBenevole(String Name, String Surname, String Mail, String motdepasse) {
+    public boolean inscrireBenevole(String Name, String Surname, String Mail, String motdepasse) {
         Connection connection=null;
         try  {
             connection =Network.Connect();
@@ -211,7 +211,7 @@ public class inscri extends JFrame {
             return false;
         }
     }
-    private boolean inscrireValideur(String Name, String Surname, String Mail, String motdepasse) {
+    public boolean inscrireValideur(String Name, String Surname, String Mail, String motdepasse) {
         Connection connection=null;
         try  {
             connection =Network.Connect();

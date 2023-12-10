@@ -14,7 +14,7 @@ import java.sql.SQLException;
 
 public class PageMissionBenev extends JFrame {
     private JTable missionTable;
-    private DefaultTableModel tableModel;
+    public DefaultTableModel tableModel;
     Connection connection = null;
    
 
@@ -73,7 +73,7 @@ public class PageMissionBenev extends JFrame {
         setVisible(true);
     }
    
-    void ChoisirMission( ) {
+    public void ChoisirMission( ) {
          // Créer une boîte de dialogue pour saisir les informations de la mission
          JTextField id = new JTextField();
 

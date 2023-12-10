@@ -102,7 +102,7 @@ public class cnx extends JFrame {
         setVisible(true);
     }
 
-    private int validerUtilisateur(String Name, String password) {
+    public int validerUtilisateur(String Name, String password) {
         // Configure la connexion de la BBDD
         
         Connection connection = null;
@@ -127,7 +127,7 @@ public class cnx extends JFrame {
             return -1;
         }
     }
-    private boolean validerBenevole(String Name, String password) {
+    public boolean validerBenevole(String Name, String password) {
      
         Connection connection =null;
         try  {
@@ -148,7 +148,7 @@ public class cnx extends JFrame {
             return false;
         }
     }
-    private boolean validerValideur(String Name, String password) {
+    public boolean validerValideur(String Name, String password) {
        
         Connection connection=null;
         try  {

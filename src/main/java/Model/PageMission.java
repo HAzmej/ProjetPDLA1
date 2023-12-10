@@ -17,7 +17,7 @@ import java.sql.SQLException;
 public class PageMission  {
     private JFrame frame = new JFrame();
     private JTable missionTable;
-    private DefaultTableModel tableModel;
+    public DefaultTableModel tableModel;
   
 
     public PageMission(int idUtilisateur) throws SQLException{
@@ -83,7 +83,7 @@ public class PageMission  {
     }
     
     
-    private void deletemission(){
+    public void deletemission(){
          Connection connection = null;
             try {
                  // Établir la connexion à la base de données
@@ -112,7 +112,7 @@ public class PageMission  {
             }       
     }
     
-    private void ajouterMission(int idUser) {
+    public boolean ajouterMission(int idUser) {
         // Créer une boîte de dialogue pour saisir les informations de la mission
         JTextField descriptionField = new JTextField();
     
@@ -152,7 +152,8 @@ public class PageMission  {
                     preparedStatement.setString(3, nouvelEtat);
                     preparedStatement.setString(4, nouveauCommentaire);
                     preparedStatement.executeUpdate();
-                }
+                    return true;
+                } 
             } catch (SQLException ex) {
                 ex.printStackTrace();
             } finally {
@@ -162,10 +163,12 @@ public class PageMission  {
                         connection.close();
                     } catch (SQLException ex) {
                         ex.printStackTrace();
+                        return false;
                     }
                 }
             }
         }
+        return false;
     }
     
     public static void main(String[] args) throws SQLException {

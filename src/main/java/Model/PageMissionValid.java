@@ -17,7 +17,7 @@ import java.sql.SQLException;
 
 public class PageMissionValid extends JFrame{
     private JTable missionTable;
-    private DefaultTableModel tableModel;
+    public DefaultTableModel tableModel;
     
 
     public PageMissionValid(){
@@ -104,7 +104,7 @@ public class PageMissionValid extends JFrame{
         setVisible(true);
 
     }
-    void RefuserMission() {
+    public void RefuserMission() {
          // Créer une boîte de dialogue pour saisir les informations de la mission
          JTextField id = new JTextField();
          JTextField comm = new JTextField();
@@ -163,7 +163,7 @@ public class PageMissionValid extends JFrame{
 
     }
 }
-void ChoisirMission() {
+public void ChoisirMission() {
          // Créer une boîte de dialogue pour saisir les informations de la mission
          JTextField id = new JTextField();
 
